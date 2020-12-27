@@ -1,10 +1,11 @@
 module.exports = async () => {
     return {
         verbose: true,
-        rootDir: "../",
-        reporters: [  
+        rootDir: "../API-jest",
+        reporters: [
             "default"
         ],
-        testTimeout: 15000
+        testTimeout: 15000,
+        setupFilesAfterEnv: ["jest-allure/dist/setup"]
     };
 };

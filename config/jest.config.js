@@ -1,7 +1,7 @@
 module.exports = async () => {
     return {
         verbose: true,
-        rootDir: "../API-jest",
+        rootDir: "../",
         reporters: [
             "default"
         ],

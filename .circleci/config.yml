@@ -1,8 +1,22 @@
 version: 2.1
+
 orbs:
   node: circleci/node@3.0.0
   allure: ayte/allure@0.1.3
+
+jobs:
+  allure-generate:
+    docker:
+      - image: circleci/openjdk:8
+    steps:
+      - allure/install
+      - allure/report
+    parallelism: 1
+
 workflows:
-  node-tests:
+  node-tests:   
     jobs:
       - node/test
+      - allure-generate:
+          requires:
+          - node/test

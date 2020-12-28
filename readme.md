@@ -8,6 +8,11 @@ API published on https://jsonplaceholder.typicode.com/
 - Allure for reporting
 - [superagent](https://github.com/visionmedia/superagent), HTTP request library  
 
+## Project contains
+- tests for several API flows
+- allure reporter
+- config files for CircleCI
+
 ## Installation 
 Install Jest using yarn:
 ```bash
@@ -23,10 +28,6 @@ npm install --save-dev jest
 From terminal:
 ```bash
 npm run test
-```
-
-From command line
-```bash
 ```
 
 ## How to get a report

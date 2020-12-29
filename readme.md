@@ -24,7 +24,11 @@ Note: assuming `npm` is already installed.
 
 From terminal:
 ```bash
-npm test
+npm run test
+```
+To get results with coverage:
+```bash
+npm run test-with-coverage
 ```
 For CLI options please reffer to official [docs](https://jestjs.io/docs/en/cli)
 

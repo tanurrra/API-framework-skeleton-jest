@@ -6,6 +6,8 @@ module.exports = async () => {
             "default"
         ],
         testTimeout: 15000,
-        setupFilesAfterEnv: ["jest-allure/dist/setup"]
+        setupFilesAfterEnv: ["<rootDir>/node_modules/jest-allure/dist/setup"],
+        collectCoverage: true,
+        testResultsProcessor: "jest-allure-reporter"
     };
 };

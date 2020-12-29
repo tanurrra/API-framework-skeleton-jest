@@ -1,5 +1,8 @@
 {
   "name": "api-test-framework",
+  "jest": {
+    "verbose": true
+  },
   "scripts": {
     "test": "jest"
   },

@@ -14,21 +14,19 @@ API published on https://jsonplaceholder.typicode.com/
 - config files for CircleCI
 
 ## Installation 
-Install Jest using yarn:
+Install all packages using npm:
 ```bash
-yarn add --dev jest
+npm ci
 ```
+Note: assuming `npm` is already installed.
 
-Or npm:
-```bash
-npm install --save-dev jest
-```
 ## How to run tests
 
 From terminal:
 ```bash
-npm run test
+npm test
 ```
+For CLI options please reffer to official [docs](https://jestjs.io/docs/en/cli)
 
 ## How to get a report
 You need to install the [CLI](https://docs.qameta.io/allure/#_commandline) in order to obtain a report.
@@ -39,5 +37,6 @@ allure serve
 ```
 If you want to generate html version, run in console
 ```bash
-allure generate
+allure generate --clean
 ```
+and report will be generated in allure-report folder.

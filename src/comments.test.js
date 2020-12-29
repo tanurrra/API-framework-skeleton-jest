@@ -1,4 +1,4 @@
-import { searchForUser, searchForPosts, searchForComments } from './search'
+import { searchForUser, searchForPosts, searchForComments } from './helper/search'
 
 const emailRegex = /\S+@\S+\.\S+/; // it's simple validation; might be adjusted according to requirements
 
@@ -21,7 +21,6 @@ test('email format in comments of specific post is correct', async () => {
 
 test('emails in comments of the post of specific user are in proper format', async () => {
     const userName = 'Delphine'; // TODO here for simplicity; normally should be in config
-
     const userSearchRes = await searchForUser(userName);
     if (userSearchRes.length > 1) {
         console.log(`WARN Found ${userSearchRes.length} users for user name "${userName}". Will use the first one.`);
@@ -31,7 +30,7 @@ test('emails in comments of the post of specific user are in proper format', asy
     expect(postsSearchRes.length).toBeGreaterThan(0);
     console.log(`Found ${postsSearchRes.length} posts for user "${userName}"`);
     // TODO get array of post IDs
-    // could cause a bad performance on real data
+    // could cause a bad performance on real data; would like to discuss a need of this check.
     const postId = [postsSearchRes[0].id, postsSearchRes[1].id];
 
     let commentsSearchRes;
@@ -43,4 +42,11 @@ test('emails in comments of the post of specific user are in proper format', asy
             expect(emailRegex.test(String(commentsSearchRes[commentIndex].email))).toBe.true;
         }
     }
+});
+
+test('specific post does not have any comments', async () => {
+    const postIdWithoutComments = '1111111'; // TODO here for simplicity; normally should be in config
+    const commentsSearchRes = await searchForComments(postIdWithoutComments);
+    // check all returned comments has same postId
+    expect(commentsSearchRes.length).toBe(0);
 });

@@ -1,7 +1,10 @@
+import { globalConfig } from '../config/global.config';
 import { searchForUser, searchForPosts } from './helper/search'
 
-test('can search for a posts by username', async () => {
-  const userName = 'Delphine'; // TODO here for simplicity; normally should be in config
+// beforeEach(() => console.log('Starting test:', expect.getState().currentTestName));
+
+test(`can search for a posts by username="${globalConfig.validUserName}"`, async () => {
+  const userName = globalConfig.validUserName;
   const userSearchRes = await searchForUser(userName);
   // TODO assume only one usename found; otherwise need to iterate throuth array
   if (userSearchRes.length > 1) {
@@ -17,8 +20,8 @@ test('can search for a posts by username', async () => {
   });
 });
 
-test('can search for a posts by invalid username and get empty responce', async () => {
-  const userIdDoesNotExist = '00000000000000000';
+test(`can search for a posts by invalid username="${globalConfig.userIdDoesNotExist}" and get empty responce`, async () => {
+  const userIdDoesNotExist = globalConfig.userIdDoesNotExist;
   const postsSearchRes = await searchForPosts(userIdDoesNotExist);
   expect(postsSearchRes.length).toBe(0);
 });
@@ -29,8 +32,8 @@ test('can search for a posts by valid username without posts', async () => {
   expect(postsSearchRes.length).toBe(0);
 });
 
-test('can search for a posts by invalid username and get empty responce', async () => {
-  const invalidUserId = 'sdf^&8&^*76';
+test(`can search for a posts by invalid username=${globalConfig.invalidUserId} and get empty responce`, async () => {
+  const invalidUserId = globalConfig.invalidUserId;
   const postsSearchRes = await searchForPosts(invalidUserId);
   expect(postsSearchRes.length).toBe(0);
 });

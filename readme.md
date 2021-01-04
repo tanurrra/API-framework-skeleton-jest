@@ -11,18 +11,17 @@ API published on https://jsonplaceholder.typicode.com/
 ## Project contains
 - tests for several API flows
 - allure reporter
-- config files for CircleCI
+- config file for integration with CircleCI
 
 ## Installation 
 Install all packages using npm:
 ```bash
-npm ci
+npm install
 ```
 Note: assuming `npm` is already installed.
 
 ## How to run tests
-
-From terminal:
+To run tests on Windows, MacOS from terminal first install and after run:
 ```bash
 npm run test
 ```
@@ -44,3 +43,9 @@ If you want to generate html version, run in console
 allure generate --clean
 ```
 and report will be generated in allure-report folder.
+
+## Covered flows
+1. Search for the user with username “Delphine” (taken from `config/global.config.js`).
+2. Use the details fetched to make a search for the posts written by the
+user.
+3. For each post, fetch the comments and validate if the emails in the comment section are in the proper format.

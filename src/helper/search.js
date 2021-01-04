@@ -1,9 +1,9 @@
 import superagent from 'superagent';
-import {path, endpointUsers, endpointPosts, endpointComments} from '../helper/test.config';
+import {globalConfig} from '../../config/global.config'
 
 export async function searchForUser(userName) {
   try {
-    const res = await superagent.get(`${path}${endpointUsers}?username=${userName}`);
+    const res = await superagent.get(`${globalConfig.path}/users?username=${userName}`);
     expect(res.status).toBe(200);
     return res.body;
   } catch (err) {
@@ -13,7 +13,7 @@ export async function searchForUser(userName) {
 
 export async function searchForPosts(userId) {
   try {
-    const res = await superagent.get(`${path}${endpointPosts}?userId=${userId}`);
+    const res = await superagent.get(`${globalConfig.path}/posts?userId=${userId}`);
     expect(res.status).toBe(200);
     return res.body;
   } catch (err) {
@@ -23,7 +23,7 @@ export async function searchForPosts(userId) {
 
 export async function searchForComments(postId) {
   try {
-    const res = await superagent.get(`${path}${endpointComments}?postId=${postId}`);
+    const res = await superagent.get(`${globalConfig.path}/comments?postId=${postId}`);
     expect(res.status).toBe(200);
     return res.body;
   } catch (err) {
